@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@CrossOrigin("http://localhost:3001")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/autoservices")
 public class AutoserviceController {
 
@@ -22,11 +22,12 @@ public class AutoserviceController {
         this.autoserviceRepository = autoserviceRepository;
     }
 
-    @PostMapping
+    @PostMapping("/autoservice")
     public ResponseEntity<Autoservice> addAutoservice(@RequestBody Autoservice autoservice) {
         Autoservice createdAutoservice = autoserviceRepository.save(autoservice);
         return new ResponseEntity<>(createdAutoservice, HttpStatus.CREATED);
     }
+
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteAutoservice(@PathVariable Long id) {
